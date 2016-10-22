@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'error-build-types',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./error-build-types.component.css']
 })
 export class ErrorBuildTypesComponent {
-
+  @Input() buildTypes;
 }

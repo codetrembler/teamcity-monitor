@@ -1,0 +1,6 @@
+<form name="login" (ngSubmit)="onSubmit()">
+  <input name="username" placeholder="Benutzer" [(ngModel)]="credentials.username" type="text" (change)="authenticationError = false;">
+  <input name="password" placeholder="Passwort" [(ngModel)]="credentials.password" type="password" (change)="authenticationError = false;">
+  <button type="submit">Login</button>
+<!--  <div ngIf="authenticationError">Benutzername oder Passwort falsch</div>-->
+</form>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Jsonp, Headers, RequestOptionsArgs, ResponseContentType } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,24 @@ import { Http } from '@angular/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private buildTypes;
+  private errorBuildTypes = [];
+  private successfulBuildTypes = [];
 
-  constructor(private http: Http) {
-    http.get('https://teamcity.jetbrains.com/guestAuth/app/rest/buildTypes?fields=buildType(id,name,builds($locator(running:false,canceled:false,count:1),build(number,status)))')
-      .subscribe(buildTypes => this.buildTypes = buildTypes);
+  constructor(private http: Http, private jsonp: Jsonp) {
+    http.get('http://localhost:8080/buildTypes')
+      .subscribe(buildTypes => {
+        let buildType = buildTypes.json().buildType;
+        this.errorBuildTypes = buildType.filter((element) => element
+          && element.builds
+          && element.builds.build[0]
+          && element.builds.build[0].status === 'FAILURE'
+        );
+
+        this.successfulBuildTypes = buildType.filter((element) => element
+          && element.builds
+          && element.builds.build[0]
+          && element.builds.build[0].status === 'FAILURE'
+        );
+      });
   }
 }
