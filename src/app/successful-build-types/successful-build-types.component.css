@@ -1,0 +1,36 @@
+:host {
+  background-color: rgba(0, 255, 0, 0.4);
+  display: flex;
+  align-items: stretch;
+}
+
+.header {
+  background-color: green;
+  padding: 20px;
+  min-width: 200px;
+  max-width: 200px;
+  width: 200px;
+}
+
+ul {
+  margin: 0 20px;
+  display: flex;
+  padding-left: 0;
+  overflow: auto;
+}
+
+li:first-child {
+  margin-left: 0;
+}
+
+li {
+  display: block;
+  background-color: green;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  min-width: 200px;
+  max-width: 200px;
+  width: 200px;
+}
