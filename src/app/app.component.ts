@@ -13,10 +13,7 @@ export class AppComponent {
 
   constructor(private http: Http, private jsonp: Jsonp) {
     let buildTypes$ = http.get('http://localhost:8080/buildTypes')
-      .switchMap(buildTypes => {
-        let arr = buildTypes.json().buildType;
-        return Observable.from(arr);
-      })
+      .switchMap(buildTypes => Observable.from(buildTypes.json()))
       .share();
       
       buildTypes$.filter(element => element.builds.build[0] && element.builds.build[0].status === 'FAILURE')
