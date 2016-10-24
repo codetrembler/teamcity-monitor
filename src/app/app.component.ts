@@ -16,11 +16,11 @@ export class AppComponent {
       .switchMap(buildTypes => Observable.from(buildTypes.json()))
       .share();
       
-      buildTypes$.filter(element => element.builds.build[0] && element.builds.build[0].status === 'FAILURE')
+      buildTypes$.filter((element: any) => element.builds.build[0] && element.builds.build[0].status === 'FAILURE')
         .toArray()
         .subscribe(errorBuildTypes => this.errorBuildTypes = errorBuildTypes);
 
-      buildTypes$.filter(element => element.builds.build[0] && element.builds.build[0].status === 'SUCCESS')
+      buildTypes$.filter((element: any) => element.builds.build[0] && element.builds.build[0].status === 'SUCCESS')
         .toArray()
         .subscribe(successfulBuildTypes => this.successfulBuildTypes = successfulBuildTypes);
   }
