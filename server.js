@@ -5,6 +5,8 @@ var express = require('express'),
   fs = require('fs'),
   config = JSON.parse(fs.readFileSync('config.json').toString());
 
+app.use('/', express.static('static'));
+
 app.get('/buildTypes', cors(), function (req, res, next) {
   var str = '';
   https.get({

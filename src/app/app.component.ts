@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Http, Jsonp, Headers, RequestOptionsArgs, ResponseContentType } from '@angular/http';
+import { Component, ElementRef } from '@angular/core';
+import { Http, Headers, RequestOptionsArgs, ResponseContentType } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -11,8 +11,8 @@ export class AppComponent {
   private errorBuildTypes = [];
   private successfulBuildTypes = [];
 
-  constructor(private http: Http, private jsonp: Jsonp) {
-    let buildTypes$ = http.get('http://localhost:8080/buildTypes')
+  constructor(private http: Http, private elementRef: ElementRef) {
+    let buildTypes$ = http.get('buildTypes')
       .switchMap(buildTypes => Observable.from(buildTypes.json()))
       .share();
       
@@ -23,5 +23,9 @@ export class AppComponent {
       buildTypes$.filter((element: any) => element.builds.build[0] && element.builds.build[0].status === 'SUCCESS')
         .toArray()
         .subscribe(successfulBuildTypes => this.successfulBuildTypes = successfulBuildTypes);
+
+      // Observable.interval(2000)
+      //   .map(value => value * 220)
+      //   .subscribe(value => console.log(elementRef.nativeElement));
   }
 }
