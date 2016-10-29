@@ -10,7 +10,7 @@ app.use('/', express.static('static'));
 app.get('/buildTypes', cors(), function (req, res, next) {
   var str = '';
   https.get({
-    hostname: 'teamcity.jetbrains.com',
+    hostname: config.hostname,
     path: '/guestAuth/app/rest/buildTypes?fields=buildType(id,name,builds($locator(running:false,canceled:false,count:1),build(number,status)))',
     headers: {
       Accept: 'application/json'

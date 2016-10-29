@@ -1,4 +1,5 @@
 {
+  "hostname": "teamcity.jetbrains.com",
   "buildTypes": [
     "bt218",
     "bt219",
