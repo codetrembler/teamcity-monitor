@@ -1,15 +1,17 @@
 var express = require('express'),
   cors = require('cors'),
   app = express(),
-  https = require('https'),
+  http,
   fs = require('fs'),
   config = JSON.parse(fs.readFileSync('config.json').toString());
+
+http = config.tls ? require('https') : require('http');
 
 app.use('/', express.static('static'));
 
 app.get('/buildTypes', cors(), function (req, res, next) {
   var str = '';
-  https.get({
+  http.get({
     hostname: config.hostname,
     path: '/guestAuth/app/rest/buildTypes?fields=buildType(id,name,builds($locator(running:false,canceled:false,count:1),build(number,status)))',
     headers: {
