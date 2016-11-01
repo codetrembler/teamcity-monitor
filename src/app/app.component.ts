@@ -13,7 +13,7 @@ export class AppComponent {
   private successfulBuildTypes = [];
 
   constructor(private http: Http, private elementRef: ElementRef) {
-    let buildTypes$ = Observable.interval(20000)
+    let buildTypes$ = Observable.interval(120000)
       .flatMap(() => this.getBuildTypes())
       .subscribe(buildTypes => {
         this.errorBuildTypes = buildTypes.filter(element => element.builds.build[0] && element.builds.build[0].status === 'FAILURE');
