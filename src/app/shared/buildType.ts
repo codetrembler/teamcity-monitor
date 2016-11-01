@@ -4,7 +4,7 @@ export interface BuildType {
   builds: BuildsProperty;
 }
 
-interface BuildsProperty {
+export interface BuildsProperty {
   build: Array<Build>;
 }
 
