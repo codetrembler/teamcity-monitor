@@ -5,11 +5,20 @@
 }
 
 .header {
+  font-size: 20px;
   background-color: #76AC5F;
   padding: 20px;
   min-width: 200px;
   max-width: 200px;
   width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .count {
+  font-size: 120px;
 }
 
 ul {
@@ -33,4 +42,9 @@ li {
   min-width: 200px;
   max-width: 200px;
   width: 200px;
+}
+
+li div.name {
+  margin-top: 10px;
+  font-size: 20px;
 }

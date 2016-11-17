@@ -1,4 +1,11 @@
-<div class="header">Fehlerhafte Builds: {{ buildTypes.length }}</div>
+<div class="header">
+  <div class="count">{{ buildTypes.length }}</div>
+  <div>Builds</div>
+</div>
+
 <ul>
-  <li *ngFor="let item of buildTypes">{{ item.name }}</li>
+  <li *ngFor="let item of buildTypes">
+    <div>{{ item.projectName }}</div>
+    <div class="name">{{ item.name }}</div>
+  </li>
 </ul>
